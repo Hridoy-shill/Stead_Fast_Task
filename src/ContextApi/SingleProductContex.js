@@ -12,7 +12,7 @@ export const SingleProductProvider = ({ children }) => {
   useEffect(() => {
     const fetchSingleProduct = async () => {
       try {
-        const res = await fetch('157.230.240.97:9999/api/v1/product/iphone-15-plus');
+        const res = await fetch('http://157.230.240.97:9999/api/v1/product/iphone-15-plus');
         const json = await res.json();
         setSingleProduct(json?.data || []);
       } catch (err) {

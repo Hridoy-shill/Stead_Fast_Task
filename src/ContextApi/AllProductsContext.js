@@ -12,7 +12,7 @@ export const ProductProvider = ({ children }) => {
   useEffect(() => {
     const AllProducts = async () => {
       try {
-        const res = await fetch('157.230.240.97:9999/api/v1/shop/products');
+        const res = await fetch('http://157.230.240.97:9999/api/v1/shop/products');
         const json = await res.json();
         setAllProducts(json?.data || []);
       } catch (err) {
