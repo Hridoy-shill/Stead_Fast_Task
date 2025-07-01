@@ -13,7 +13,6 @@ import Swal from "sweetalert2";
 
 const MyCart = () => {
   const [cartItems, setCartItems] = useState([]);
-  console.log(cartItems);
   const [agreed, setAgreed] = useState(true);
 
   useEffect(() => {
@@ -49,14 +48,14 @@ const MyCart = () => {
       showConfirmButton: false,
       timerProgressBar: true,
     }).then(() => {
-      // ✅ Reload the page after popup closes
       window.location.reload();
     });
   };
 
   return (
     <div className="bg-[#f1f5f9] md:flex gap-[20px]">
-      {/* Left Section */}
+
+      {/* cart items Section */}
       <div className="md:w-[70%] w-full bg-white p-[20px] rounded-[6px]">
         <div className="md:flex justify-between border-b-[1.5px] border-[#dedede] pb-[20px] pe-[5px]">
           <h1 className="text-2xl font-bold text-[#0F172A]">
@@ -92,7 +91,7 @@ const MyCart = () => {
                 <Image
                   src={item.image}
                   alt="product"
-                  width={96} // 24 * 4 (1rem = 16px, so 24rem = 96px)
+                  width={96}
                   height={96}
                   className="rounded border border-black object-cover"
                 />
@@ -162,7 +161,7 @@ const MyCart = () => {
         </div>
       </div>
 
-      {/* Right Section */}
+      {/* order summary Section */}
       <div className="md:w-[30%] w-full md:px-0 px-[10px] md:mt-0 mt-[10px]">
         <div className="bg-white rounded-lg shadow p-4">
           <h2 className="font-semibold text-lg mb-4">Order summary</h2>

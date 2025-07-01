@@ -8,7 +8,6 @@ import { IoIosArrowDown } from "react-icons/io";
 
 const Description = () => {
   const { singleProduct, loading } = useSingleProduct();
-  console.log("from line no 8", singleProduct);
 
   //  see more description functionality ------ >
   const [showFullDescription, setShowFullDescription] = useState(false);

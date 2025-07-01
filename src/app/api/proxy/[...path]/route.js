@@ -1,13 +1,11 @@
 export async function GET(req, { params }) {
   const { path } = params;
 
-  // query string handle
   const query = req.url.split('?')[1] || '';
   const queryString = query ? `?${query}` : '';
 
-  // Final backend API URL
   const apiUrl = `http://157.230.240.97:9999/api/v1/${path.join('/')}${queryString}`;
-  console.log("➡️ Proxying to:", apiUrl);
+  // console.log("➡️ Proxying to:", apiUrl);
 
   try {
     const response = await fetch(apiUrl, {

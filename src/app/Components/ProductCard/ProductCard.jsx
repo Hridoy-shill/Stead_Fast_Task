@@ -22,7 +22,6 @@ import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 
 const ProductCard = () => {
   const { singleProduct, SingleLoading } = useSingleProduct();
-  console.log(singleProduct);
 
   // variations State
   const [variations, setVariations] = useState([]);
@@ -67,8 +66,6 @@ const ProductCard = () => {
   };
 
   // get specific product functionality for add to cart ------ >
-
-  // find the matched variation and color matched product
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
@@ -141,10 +138,9 @@ const ProductCard = () => {
 
     localStorage.setItem("cart", JSON.stringify(existingCart));
 
-    // ✅ Trigger custom cart update event
     window.dispatchEvent(new Event("cart-updated"));
 
-    // ✅ Show success message with SweetAlert
+    // Show success message pop up
     Swal.fire({
       title: "Product Added Successfully",
       icon: "success",
@@ -153,7 +149,6 @@ const ProductCard = () => {
       showConfirmButton: false,
       timerProgressBar: true,
     }).then(() => {
-      // ✅ Reload the page after popup closes
       window.location.reload();
     });
   };
@@ -332,7 +327,7 @@ const ProductCard = () => {
 
         <div>
           <button
-            className="md:w-3/4 w-full mt-[20px] text-center bg-[#00a788] text-white py-[5px] rounded-[4px] cursor-pointer md:mb-[0px] mb-[15px]"
+            className="md:w-3/4 w-full mt-[20px] text-center bg-[#00a788] text-white py-[5px] rounded-[4px] cursor-pointer md:mb-[0px] mb-[15px]transition delay-0 duration-200 ease-in-out hover:-translate-y-1 hover:scale-110"
             onClick={handleAddToCart}
           >
             Add to Cart

@@ -8,7 +8,6 @@ import { IoIosArrowDown } from "react-icons/io";
 
 const Specification = () => {
   const { singleProduct, loading } = useSingleProduct();
-  console.log("from line no 8", singleProduct);
 
   // Group unique attribute values by attribute name
   const specsMap = {};

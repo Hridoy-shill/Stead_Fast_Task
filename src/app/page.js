@@ -11,7 +11,6 @@ import RelevantProducts from "./Components/RelevantProducts/RelevantProducts";
 
 const ProductPage = () => {
   const { allProducts, loading } = useProducts([]);
-  console.log(allProducts);
 
   return (
     <div className="">

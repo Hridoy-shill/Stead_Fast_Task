@@ -32,7 +32,6 @@ const RelevantProducts = () => {
         );
 
         setRelevantProducts(relevant);
-        console.log('Relevant Products with variations:', relevant);
     }, [allProducts, singleProduct]);
 
     return (
