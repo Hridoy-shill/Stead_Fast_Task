@@ -137,7 +137,7 @@ const MyCart = () => {
                       </button>
                       <div className="w-full text-center font-bold">
                         {item.quantity}
-                      </div>
+                      </div> 
                       <button
                         onClick={() => updateQuantity(index, 1)}
                         className="bg-[#f1f5f9] w-full rounded-full cursor-pointer"
