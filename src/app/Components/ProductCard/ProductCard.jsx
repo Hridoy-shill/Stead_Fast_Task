@@ -325,7 +325,7 @@ const ProductCard = () => {
           </div>
         </div>
 
-        <div>
+        <div className="md:mb-[0] mb-[20px]">
           <button
             className="md:w-3/4 w-full mt-[20px] text-center bg-[#00a788] text-white py-[5px] rounded-[4px] cursor-pointer md:mb-[0px] mb-[15px]transition delay-0 duration-200 ease-in-out hover:-translate-y-1 hover:scale-110"
             onClick={handleAddToCart}

@@ -30,7 +30,7 @@ const ProductPage = () => {
         <Description></Description>
       </div>
 
-      <div className="mt-[20px] md:px-[50px] px-[20px] mb-[80px]">
+      <div className="mt-[20px] md:px-[50px] px-[20px] md:mb-[80px] mb-[40px]">
         <Specification></Specification>
       </div>
 

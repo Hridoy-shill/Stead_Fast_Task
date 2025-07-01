@@ -13,7 +13,7 @@ import Swal from "sweetalert2";
 
 const MyCart = () => {
   const [cartItems, setCartItems] = useState([]);
-  const [agreed, setAgreed] = useState(true);
+  const [agreed, setAgreed] = useState(false);
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -57,11 +57,11 @@ const MyCart = () => {
 
       {/* cart items Section */}
       <div className="md:w-[70%] w-full bg-white p-[20px] rounded-[6px]">
-        <div className="md:flex justify-between border-b-[1.5px] border-[#dedede] pb-[20px] pe-[5px]">
+        <div className="md:flex justify-between border-b-[1.5px] border-[#dedede] md:pb-[20px] pb-[10px] pe-[5px]">
           <h1 className="text-2xl font-bold text-[#0F172A]">
             My Cart ({cartItems.length})
           </h1>
-          <div className="flex items-center gap-[25px]">
+          <div className="flex items-center gap-[25px] md:mt-[0px] mt-[10px]">
             <div className="flex items-center gap-[5px]">
               <MdCheckBoxOutlineBlank className="text-[#a3aab4] text-[22px]"></MdCheckBoxOutlineBlank>
               <p className="text-[#707070]">Select All</p>
