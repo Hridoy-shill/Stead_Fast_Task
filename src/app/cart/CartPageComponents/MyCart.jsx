@@ -40,25 +40,25 @@ const MyCart = () => {
     0
   );
 
-  const handleCheckout = () =>{
+  const handleCheckout = () => {
     Swal.fire({
-        title: "Thank You So Much For Review The Project",
-        icon: "success",
-        confirmButtonText: "OK",
-        timer: 1500,
-        showConfirmButton: false,
-        timerProgressBar: true,
-      }).then(() => {
-        // ✅ Reload the page after popup closes
-        window.location.reload();
-      });
-  }
+      title: "Thank You So Much For Review The Project",
+      icon: "success",
+      confirmButtonText: "OK",
+      timer: 1500,
+      showConfirmButton: false,
+      timerProgressBar: true,
+    }).then(() => {
+      // ✅ Reload the page after popup closes
+      window.location.reload();
+    });
+  };
 
   return (
-    <div className="bg-[#f1f5f9] flex gap-[20px]">
+    <div className="bg-[#f1f5f9] md:flex gap-[20px]">
       {/* Left Section */}
-      <div className="w-[70%] bg-white p-[20px] rounded-[6px]">
-        <div className="flex justify-between border-b-[1.5px] border-[#dedede] pb-[20px] pe-[5px]">
+      <div className="md:w-[70%] w-full bg-white p-[20px] rounded-[6px]">
+        <div className="md:flex justify-between border-b-[1.5px] border-[#dedede] pb-[20px] pe-[5px]">
           <h1 className="text-2xl font-bold text-[#0F172A]">
             My Cart ({cartItems.length})
           </h1>
@@ -97,21 +97,36 @@ const MyCart = () => {
                   className="rounded border border-black object-cover"
                 />
                 <div className="flex-1">
-                  <h2 className="font-semibold text-lg">
-                    Bestway Brand Air Inflatable 5 In 1 semi Double Sofa
-                  </h2>
-                  <p className="text-gray-600 text-sm mt-[5px]">
-                    {item.variation_attributes
-                      .map(
-                        (attr) =>
-                          `${attr.attribute.name.toLowerCase()}: ${
-                            attr.attribute_option.attribute_value
-                          }`
-                      )
-                      .join(", ")}
-                  </p>
+                  <div className="md:flex items-center">
+                    <div>
+                      <h2 className="font-semibold text-lg">
+                        Bestway Brand Air Inflatable 5 In 1 semi Double Sofa
+                      </h2>
+                      <p className="text-gray-600 text-[16px] my-[5px]">
+                        {item.variation_attributes
+                          .map(
+                            (attr) =>
+                              `${attr.attribute.name.toLowerCase()}: ${
+                                attr.attribute_option.attribute_value
+                              }`
+                          )
+                          .join(", ")}
+                      </p>
+                    </div>
+                    <div className="ml-auto text-right">
+                      <p className="font-bold text-lg text-black flex gap-[2px] items-center">
+                        <FaBangladeshiTakaSign className="text-[16px]" />{" "}
+                        {item.discount_price}
+                      </p>
+                      <p className="line-through text-sm text-gray-400 flex gap-[2px] items-center">
+                        <FaBangladeshiTakaSign className="text-[12px]" />{" "}
+                        {item.regular_price}
+                      </p>
+                    </div>
+                  </div>
+
                   <div className="flex items-center gap-[10px] mt-2">
-                    <div className="flex justify-around items-center text-center py-[5px] border border-[#b4b4b4] rounded-full w-1/4 px-[5px]">
+                    <div className="flex justify-around items-center text-center py-[5px] border border-[#b4b4b4] rounded-full md:w-1/4 w-3/5 px-[5px]">
                       <button
                         onClick={() => updateQuantity(index, -1)}
                         className="bg-[#f1f5f9] w-full rounded-full cursor-pointer"
@@ -135,19 +150,10 @@ const MyCart = () => {
 
                     <button
                       onClick={() => removeItem(index)}
-                      className="text-gray-400 ml-4 hover:text-red-500"
+                      className="text-gray-400 md:ml-4 hover:text-red-500 mt-[5px]"
                     >
                       <RiDeleteBin5Line className="text-[20px]" />
                     </button>
-
-                    <div className="ml-auto text-right">
-                      <p className="font-bold text-lg text-black flex gap-[2px] items-center">
-                        <FaBangladeshiTakaSign className="text-[16px]"></FaBangladeshiTakaSign> {item.discount_price}
-                      </p>
-                      <p className="line-through text-sm text-gray-400 flex gap-[2px] items-center">
-                        <FaBangladeshiTakaSign className="text-[12px]"></FaBangladeshiTakaSign> {item.regular_price}
-                      </p>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -157,12 +163,16 @@ const MyCart = () => {
       </div>
 
       {/* Right Section */}
-      <div className="w-[30%]">
+      <div className="md:w-[30%] w-full md:px-0 px-[10px] md:mt-0 mt-[10px]">
         <div className="bg-white rounded-lg shadow p-4">
           <h2 className="font-semibold text-lg mb-4">Order summary</h2>
           <div className="flex justify-between mb-2">
             <p>Price ({cartItems.length} items)</p>
-            <p className="text-[18px] font-semibold flex gap-[2px] items-center"> <FaBangladeshiTakaSign className="text-[16px]"></FaBangladeshiTakaSign> {subtotal.toFixed(2)}</p>
+            <p className="text-[18px] font-semibold flex gap-[2px] items-center">
+              {" "}
+              <FaBangladeshiTakaSign className="text-[16px]"></FaBangladeshiTakaSign>{" "}
+              {subtotal.toFixed(2)}
+            </p>
           </div>
           <div className="flex justify-between mb-2">
             <span>Shipping fee</span>
@@ -184,10 +194,16 @@ const MyCart = () => {
 
           <div className="flex justify-between font-bold mb-4">
             <span>Sub Total</span>
-            <p className="flex gap-[2px] items-center"><FaBangladeshiTakaSign className="text-[16px]"></FaBangladeshiTakaSign>{subtotal.toFixed(2)}</p>
+            <p className="flex gap-[2px] items-center">
+              <FaBangladeshiTakaSign className="text-[16px]"></FaBangladeshiTakaSign>
+              {subtotal.toFixed(2)}
+            </p>
           </div>
 
-          <button onClick={handleCheckout} className="w-full bg-[#00B795] text-white py-2 rounded font-semibold cursor-pointer">
+          <button
+            onClick={handleCheckout}
+            className="w-full bg-[#00B795] text-white py-2 rounded font-semibold cursor-pointer"
+          >
             Proceed to Checkout
           </button>
 

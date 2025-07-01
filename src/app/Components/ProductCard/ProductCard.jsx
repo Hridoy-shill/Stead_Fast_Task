@@ -5,7 +5,7 @@ import Image from "next/image";
 import ShopLogo from "../../../../public/assets/Ellipse 2010.svg";
 import SellerBadge from "../../../../public/assets/Group 1010108421.svg";
 import VerifyBadge from "../../../../public/assets/fi_9918743.svg";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 // star rating
 import { Rating } from "@smastrom/react-rating";
@@ -68,8 +68,6 @@ const ProductCard = () => {
 
   // get specific product functionality for add to cart ------ >
 
-  // Find matched variation whenever selection changes
-
   // find the matched variation and color matched product
   const [selectedProduct, setSelectedProduct] = useState(null);
 
@@ -117,56 +115,58 @@ const ProductCard = () => {
 
   // Add to cart functionality --------- >
 
-const handleAddToCart = () => {
-  if (!selectedProduct) {
-    alert("Please Select the variant and color");
-    return;
-  }
+  const handleAddToCart = () => {
+    if (!selectedProduct) {
+      alert("Please Select the variant and color");
+      return;
+    }
 
-  const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
-  const productId =
-    selectedProduct.id || selectedProduct.slug || selectedProduct.name;
+    const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+    const productId =
+      selectedProduct.id || selectedProduct.slug || selectedProduct.name;
 
-  const existingItemIndex = existingCart.findIndex(
-    (item) => item.id === productId
-  );
+    const existingItemIndex = existingCart.findIndex(
+      (item) => item.id === productId
+    );
 
-  if (existingItemIndex > -1) {
-    existingCart[existingItemIndex].quantity = quantity;
-  } else {
-    existingCart.push({
-      ...selectedProduct,
-      id: productId,
-      quantity,
+    if (existingItemIndex > -1) {
+      existingCart[existingItemIndex].quantity = quantity;
+    } else {
+      existingCart.push({
+        ...selectedProduct,
+        id: productId,
+        quantity,
+      });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(existingCart));
+
+    // ✅ Trigger custom cart update event
+    window.dispatchEvent(new Event("cart-updated"));
+
+    // ✅ Show success message with SweetAlert
+    Swal.fire({
+      title: "Product Added Successfully",
+      icon: "success",
+      confirmButtonText: "OK",
+      timer: 1500,
+      showConfirmButton: false,
+      timerProgressBar: true,
+    }).then(() => {
+      // ✅ Reload the page after popup closes
+      window.location.reload();
     });
-  }
-
-  localStorage.setItem("cart", JSON.stringify(existingCart));
-
-  // ✅ Trigger custom cart update event
-  window.dispatchEvent(new Event("cart-updated"));
-
-  // ✅ Show success message with SweetAlert
-  Swal.fire({
-    title: "Product Added Successfully",
-    icon: "success",
-    confirmButtonText: "OK",
-    timer: 1500,
-    showConfirmButton: false,
-    timerProgressBar: true,
-  }).then(() => {
-    // ✅ Reload the page after popup closes
-    window.location.reload();
-  });
-};
+  };
 
   return (
-    <div className="bg-white px-[50px] py-[15px] lg:flex justify-between gap-[30px]">
+    <div className="bg-white md:px-[50px] px-[20px] py-[15px] lg:flex justify-between md:gap-[30px]">
+
       {/* Image Gallery Section */}
-      <div className="lg:w-[30%] flex flex-col items-start gap-4">
+      <div className="md:w-[30%] w-full flex flex-col items-start gap-4">
+
         {/* Main Image */}
         {mainImage && (
-          <div className="relative w-full h-[350px] border border-gray-300 shadow-md rounded-lg overflow-hidden">
+          <div className="relative w-full h-[300px] sm:h-[350px] border border-gray-300 shadow-md rounded-lg overflow-hidden">
             <Image
               src={mainImage}
               alt="Main Product Image"
@@ -178,12 +178,13 @@ const handleAddToCart = () => {
           </div>
         )}
 
-        <div className="flex gap-2 mt-2 flex-wrap">
+        {/* Thumbnails Images*/}
+        <div className="flex md:flex-wrap gap-2 mt-2 overflow-x-auto md:overflow-visible w-full pb-2">
           {filteredThumbnails.map((thumbUrl, idx) => (
             <div
               key={idx}
               onClick={() => setMainImage(thumbUrl)}
-              className={`relative lg:w-[80px] h-[80px] border shadow-md rounded-md cursor-pointer hover:scale-105 transition ${
+              className={`relative min-w-[70px] h-[70px] sm:min-w-[80px] sm:h-[80px] border shadow-md rounded-md cursor-pointer hover:scale-105 transition ${
                 mainImage === thumbUrl ? "border-blue-500" : "border-gray-300"
               }`}
             >
@@ -200,7 +201,7 @@ const handleAddToCart = () => {
       </div>
 
       {/* About Product Section */}
-      <div className="lg:w-[43%]">
+      <div className="md:w-[43%] w-full">
         <div>
           <h3 className="text-[24px] font-semibold">{singleProduct?.name}</h3>
         </div>
@@ -331,7 +332,7 @@ const handleAddToCart = () => {
 
         <div>
           <button
-            className="w-3/4 mt-[20px] text-center bg-[#00a788] text-white py-[5px] rounded-[4px] cursor-pointer"
+            className="md:w-3/4 w-full mt-[20px] text-center bg-[#00a788] text-white py-[5px] rounded-[4px] cursor-pointer md:mb-[0px] mb-[15px]"
             onClick={handleAddToCart}
           >
             Add to Cart

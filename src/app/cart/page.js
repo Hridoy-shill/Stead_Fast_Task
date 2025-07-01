@@ -13,7 +13,7 @@ const AddToCartPage = () => {
       <div>
         <Navigation></Navigation>
       </div>
-      <div className="px-[50px] py-[15px]">
+      <div className="md:px-[50px] py-[15px]">
         <MyCart></MyCart>
       </div>
       <div>

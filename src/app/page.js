@@ -27,15 +27,15 @@ const ProductPage = () => {
         <ProductCard></ProductCard>
       </div>
 
-      <div className="mt-[20px] px-[50px]">
+      <div className="mt-[20px] md:px-[50px] px-[20px]">
         <Description></Description>
       </div>
 
-      <div className="mt-[20px] px-[50px] mb-[80px]">
+      <div className="mt-[20px] md:px-[50px] px-[20px] mb-[80px]">
         <Specification></Specification>
       </div>
 
-      <div className="mt-[20px] px-[50px] mb-[20px]">
+      <div className="mt-[20px] md:px-[50px] px-[20px] mb-[20px]">
         <RelevantProducts></RelevantProducts>
       </div>
 

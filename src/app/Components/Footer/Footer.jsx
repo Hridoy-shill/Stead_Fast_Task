@@ -15,7 +15,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#0F172A] text-[#ffff] py-8">
       <div className="">
-        <div className="px-[50px]">
+        <div className="md:px-[50px] px-[20px]">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Brand Info */}
             <div className="space-y-4">
@@ -132,7 +132,7 @@ const Footer = () => {
             </div>
 
             {/* Download App */}
-            <div className="flex flex-col items-end text-right">
+            <div className="flex flex-col md:items-end md:text-right">
               <h4 className="font-bold mb-4">Need Support?</h4>
 
               <div className="space-y-4">
@@ -147,7 +147,7 @@ const Footer = () => {
 
               <div className="mt-6">
                 <h5 className="font-medium mb-2">DOWNLOAD APP</h5>
-                <div className="flex flex-wrap gap-2 justify-end">
+                <div className="flex flex-wrap gap-2 md:justify-end">
                   <Image
                     src={downloadApp}
                     alt="Falcon Icon"
@@ -159,8 +159,8 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="flex justify-between items-center space-x-4 pt-[15px]">
-            <div className="flex items-center gap-[10px]">
+          <div className="md:flex justify-between items-center space-x-4 pt-[15px]">
+            <div className="md:flex items-center gap-[10px]">
               <span className="font-medium">Follow us on</span>
               <div className="flex space-x-3 pt-[4px]">
                 <a href="#" className="hover:text-blue-600">
@@ -178,11 +178,11 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-[15px]">
+            <div className="md:flex items-center md:gap-[15px]">
               <span className="font-medium text-[16px] text-[#94A3B8]">
                 PAYMENTS ACCEPTED
               </span>
-              <div className="flex space-x-3">
+              <div className="flex md:space-x-3">
                 <Image
                   src={paymentIcons}
                   alt="Falcon Icon"
@@ -194,7 +194,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="border-t border-gray-300 mt-8 pt-6 text-sm text-center">
+        <div className="border-t border-gray-300 md:mt-8 pt-6 text-sm text-center">
           <p>Falcon @2025. Design by yqr</p>
         </div>
       </div>
