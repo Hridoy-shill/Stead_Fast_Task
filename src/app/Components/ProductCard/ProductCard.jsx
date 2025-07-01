@@ -53,7 +53,7 @@ const ProductCard = () => {
     ...new Set(
       variations
         .map(
-          (v) => v.variation_attributes?.[1]?.attribute_option?.attribute_value
+          (v) => v?.variation_attributes?.[1]?.attribute_option?.attribute_value
         )
         .filter(Boolean)
     ),
@@ -202,26 +202,26 @@ const handleAddToCart = () => {
       {/* About Product Section */}
       <div className="lg:w-[43%]">
         <div>
-          <h3 className="text-[24px] font-semibold">{singleProduct.name}</h3>
+          <h3 className="text-[24px] font-semibold">{singleProduct?.name}</h3>
         </div>
 
         <div className="flex justify-between items-center gap-[20px] mt-[15px]">
           <div className="w-full flex items-center gap-[15px]">
             <div className="">
               <p className="text-[16px] font-semibold text-[#757575]">
-                {singleProduct.rating_count}
+                {singleProduct?.rating_count}
               </p>
             </div>
             <div>
               <Rating
                 style={{ maxWidth: 100 }}
-                value={singleProduct.rating_avg}
+                value={singleProduct?.rating_avg}
                 readOnly
               />
             </div>
             <div className="flex items-center gap-[10px]">
               <p className="text-[16px] font-semibold text-[#757575]">
-                {singleProduct.total_stock_qty}
+                {singleProduct?.total_stock_qty}
               </p>
               <IoIosArrowDown />
             </div>
@@ -241,7 +241,7 @@ const handleAddToCart = () => {
             <FaBangladeshiTakaSign className="text-[20px] text-[#00c29e]" />
             <p className="text-[20px] font-semibold text-[#00c29e]">
               {selectedProduct?.discount_price ||
-                singleProduct.product_detail.discount_price}
+                singleProduct?.product_detail?.discount_price}
             </p>
           </div>
 
@@ -250,7 +250,7 @@ const handleAddToCart = () => {
               <FaBangladeshiTakaSign className="text-[14px] text-[#757575]" />
               <p className="text-[14px]">
                 {selectedProduct?.regular_price ||
-                  singleProduct.product_detail.regular_price}
+                  singleProduct?.product_detail?.regular_price}
               </p>
             </div>
             <span className="absolute left-0 right-0 top-1/2 h-[1px] bg-[#757575] -translate-y-1/2" />
@@ -391,7 +391,7 @@ const handleAddToCart = () => {
             <div className="flex flex-col">
               <div className="flex items-center gap-[6px]">
                 <p className="text-sm font-semibold text-[#64748b] px-[6px] py-[2px] rounded-sm">
-                  {singleProduct.merchant.shop_name}
+                  {singleProduct?.merchant?.shop_name}
                 </p>
                 <Image
                   src={VerifyBadge}
